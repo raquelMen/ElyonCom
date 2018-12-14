@@ -1,0 +1,241 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Elyon_crmModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Codificaciones">
+          <Key>
+            <PropertyRef Name="codID" />
+          </Key>
+          <Property Name="codID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="codTipoRegistro" Type="varchar" MaxLength="50" />
+          <Property Name="codEstado" Type="varchar" MaxLength="50" />
+          <Property Name="codTipoContacto" Type="varchar" MaxLength="50" />
+          <Property Name="codResultado" Type="varchar" MaxLength="80" Nullable="false" />
+          <Property Name="codTipoLlamada" Type="varchar" MaxLength="20" />
+          <Property Name="codRelanzado" Type="varchar" MaxLength="1" />
+          <Property Name="codArea" Type="varchar" MaxLength="3" />
+          <Property Name="codModulo" Type="varchar" MaxLength="3" />
+          <Property Name="codActivo" Type="varchar" MaxLength="1" />
+          <Property Name="codCtaID" Type="int" />
+          <Property Name="codAsterisk" Type="varchar" MaxLength="5" />
+          <Property Name="codMedio" Type="varchar" MaxLength="1" />
+          <Property Name="codDiasMax" Type="int" />
+        </EntityType>
+        <EntityType Name="Gestiones">
+          <Key>
+            <PropertyRef Name="gID" />
+          </Key>
+          <Property Name="gID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="areaID" Type="int" />
+          <Property Name="codGestionID" Type="int" />
+          <Property Name="agenteID" Type="int" />
+          <Property Name="baseID" Type="int" />
+          <Property Name="tramoControID" Type="int" />
+          <Property Name="areaDerivadaID" Type="int" />
+          <Property Name="estadoResueltoID" Type="int" />
+          <Property Name="clientesID" Type="int" />
+          <Property Name="fechaGestion" Type="datetime" />
+          <Property Name="fechaVll" Type="datetime" />
+          <Property Name="comentario" Type="varchar" MaxLength="2000" />
+          <Property Name="nroSocio" Type="int" />
+          <Property Name="nroCredito" Type="int" />
+          <Property Name="nroTC" Type="varchar" MaxLength="50" />
+          <Property Name="diasMora" Type="int" />
+          <Property Name="montoMora" Type="int" />
+          <Property Name="productoID" Type="int" />
+          <Property Name="telefonoRef" Type="varchar" MaxLength="50" />
+          <Property Name="seguimiento" Type="char" MaxLength="1" />
+          <Property Name="fechaResuelto" Type="datetime" />
+          <Property Name="comentario2" Type="varchar" MaxLength="2000" />
+          <Property Name="nroCI" Type="varchar" MaxLength="25" />
+          <Property Name="nombreCliente" Type="varchar" MaxLength="150" />
+          <Property Name="id_canal" Type="int" />
+          <Property Name="sucID" Type="int" />
+          <Property Name="solicobrador" Type="varchar" MaxLength="1" />
+          <Property Name="ctaId" Type="int" />
+        </EntityType>
+        <Association Name="FK_Gestiones_Codificaciones">
+          <End Role="Codificaciones" Type="Self.Codificaciones" Multiplicity="0..1" />
+          <End Role="Gestiones" Type="Self.Gestiones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Codificaciones">
+              <PropertyRef Name="codID" />
+            </Principal>
+            <Dependent Role="Gestiones">
+              <PropertyRef Name="codGestionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Elyon_crmModelStoreContainer">
+          <EntitySet Name="Codificaciones" EntityType="Self.Codificaciones" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Gestiones" EntityType="Self.Gestiones" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Gestiones_Codificaciones" Association="Self.FK_Gestiones_Codificaciones">
+            <End Role="Codificaciones" EntitySet="Codificaciones" />
+            <End Role="Gestiones" EntitySet="Gestiones" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Elyon_crmModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Gestiones">
+          <Key>
+            <PropertyRef Name="gID" />
+          </Key>
+          <Property Name="gID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="areaID" Type="Int32" />
+          <Property Name="codGestionID" Type="Int32" />
+          <Property Name="agenteID" Type="Int32" />
+          <Property Name="baseID" Type="Int32" />
+          <Property Name="tramoControID" Type="Int32" />
+          <Property Name="areaDerivadaID" Type="Int32" />
+          <Property Name="estadoResueltoID" Type="Int32" />
+          <Property Name="clientesID" Type="Int32" />
+          <Property Name="fechaGestion" Type="DateTime" Precision="3" />
+          <Property Name="fechaVll" Type="DateTime" Precision="3" />
+          <Property Name="comentario" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="nroSocio" Type="Int32" />
+          <Property Name="nroCredito" Type="Int32" />
+          <Property Name="nroTC" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="diasMora" Type="Int32" />
+          <Property Name="montoMora" Type="Int32" />
+          <Property Name="productoID" Type="Int32" />
+          <Property Name="telefonoRef" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="seguimiento" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="fechaResuelto" Type="DateTime" Precision="3" />
+          <Property Name="comentario2" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="nroCI" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="nombreCliente" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="id_canal" Type="Int32" />
+          <Property Name="sucID" Type="Int32" />
+          <Property Name="solicobrador" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="ctaId" Type="Int32" />
+          <NavigationProperty Name="Codificaciones" Relationship="Elyon_crmModel.FK_Gestiones_Codificaciones" FromRole="Gestiones" ToRole="Codificaciones" />
+        </EntityType>
+        <EntityContainer Name="elyon_crmEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Gestiones" EntityType="Self.Gestiones" />
+          <EntitySet Name="Codificaciones" EntityType="Elyon_crmModel.Codificaciones" />
+          <AssociationSet Name="FK_Gestiones_Codificaciones" Association="Elyon_crmModel.FK_Gestiones_Codificaciones">
+            <End Role="Codificaciones" EntitySet="Codificaciones" />
+            <End Role="Gestiones" EntitySet="Gestiones" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Codificaciones">
+          <Key>
+            <PropertyRef Name="codID" />
+          </Key>
+          <Property Name="codID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="codTipoRegistro" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="codEstado" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="codTipoContacto" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="codResultado" Type="String" Nullable="false" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="codTipoLlamada" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="codRelanzado" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="codArea" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="codModulo" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="codActivo" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="codCtaID" Type="Int32" />
+          <Property Name="codAsterisk" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="codMedio" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="codDiasMax" Type="Int32" />
+          <NavigationProperty Name="Gestiones" Relationship="Elyon_crmModel.FK_Gestiones_Codificaciones" FromRole="Codificaciones" ToRole="Gestiones" />
+        </EntityType>
+        <Association Name="FK_Gestiones_Codificaciones">
+          <End Type="Elyon_crmModel.Codificaciones" Role="Codificaciones" Multiplicity="0..1" />
+          <End Type="Elyon_crmModel.Gestiones" Role="Gestiones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Codificaciones">
+              <PropertyRef Name="codID" />
+            </Principal>
+            <Dependent Role="Gestiones">
+              <PropertyRef Name="codGestionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Elyon_crmModelStoreContainer" CdmEntityContainer="elyon_crmEntities">
+          <EntitySetMapping Name="Gestiones">
+            <EntityTypeMapping TypeName="Elyon_crmModel.Gestiones">
+              <MappingFragment StoreEntitySet="Gestiones">
+                <ScalarProperty Name="gID" ColumnName="gID" />
+                <ScalarProperty Name="areaID" ColumnName="areaID" />
+                <ScalarProperty Name="codGestionID" ColumnName="codGestionID" />
+                <ScalarProperty Name="agenteID" ColumnName="agenteID" />
+                <ScalarProperty Name="baseID" ColumnName="baseID" />
+                <ScalarProperty Name="tramoControID" ColumnName="tramoControID" />
+                <ScalarProperty Name="areaDerivadaID" ColumnName="areaDerivadaID" />
+                <ScalarProperty Name="estadoResueltoID" ColumnName="estadoResueltoID" />
+                <ScalarProperty Name="clientesID" ColumnName="clientesID" />
+                <ScalarProperty Name="fechaGestion" ColumnName="fechaGestion" />
+                <ScalarProperty Name="fechaVll" ColumnName="fechaVll" />
+                <ScalarProperty Name="comentario" ColumnName="comentario" />
+                <ScalarProperty Name="nroSocio" ColumnName="nroSocio" />
+                <ScalarProperty Name="nroCredito" ColumnName="nroCredito" />
+                <ScalarProperty Name="nroTC" ColumnName="nroTC" />
+                <ScalarProperty Name="diasMora" ColumnName="diasMora" />
+                <ScalarProperty Name="montoMora" ColumnName="montoMora" />
+                <ScalarProperty Name="productoID" ColumnName="productoID" />
+                <ScalarProperty Name="telefonoRef" ColumnName="telefonoRef" />
+                <ScalarProperty Name="seguimiento" ColumnName="seguimiento" />
+                <ScalarProperty Name="fechaResuelto" ColumnName="fechaResuelto" />
+                <ScalarProperty Name="comentario2" ColumnName="comentario2" />
+                <ScalarProperty Name="nroCI" ColumnName="nroCI" />
+                <ScalarProperty Name="nombreCliente" ColumnName="nombreCliente" />
+                <ScalarProperty Name="id_canal" ColumnName="id_canal" />
+                <ScalarProperty Name="sucID" ColumnName="sucID" />
+                <ScalarProperty Name="solicobrador" ColumnName="solicobrador" />
+                <ScalarProperty Name="ctaId" ColumnName="ctaId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Codificaciones">
+            <EntityTypeMapping TypeName="Elyon_crmModel.Codificaciones">
+              <MappingFragment StoreEntitySet="Codificaciones">
+                <ScalarProperty Name="codDiasMax" ColumnName="codDiasMax" />
+                <ScalarProperty Name="codMedio" ColumnName="codMedio" />
+                <ScalarProperty Name="codAsterisk" ColumnName="codAsterisk" />
+                <ScalarProperty Name="codCtaID" ColumnName="codCtaID" />
+                <ScalarProperty Name="codActivo" ColumnName="codActivo" />
+                <ScalarProperty Name="codModulo" ColumnName="codModulo" />
+                <ScalarProperty Name="codArea" ColumnName="codArea" />
+                <ScalarProperty Name="codRelanzado" ColumnName="codRelanzado" />
+                <ScalarProperty Name="codTipoLlamada" ColumnName="codTipoLlamada" />
+                <ScalarProperty Name="codResultado" ColumnName="codResultado" />
+                <ScalarProperty Name="codTipoContacto" ColumnName="codTipoContacto" />
+                <ScalarProperty Name="codEstado" ColumnName="codEstado" />
+                <ScalarProperty Name="codTipoRegistro" ColumnName="codTipoRegistro" />
+                <ScalarProperty Name="codID" ColumnName="codID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

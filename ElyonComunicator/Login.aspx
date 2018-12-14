@@ -83,7 +83,7 @@
                     <input type="checkbox" name="remember" value="1" />
                     Recuerdame
                 </label>
-                <asp:LinkButton runat="server" ID="btnAceptar" OnClick="btnAceptar_Click" CssClass="btn blue pull-right"
+                <asp:LinkButton runat="server" ID="btnAceptar" OnClick="btnAceptar_Click" CssClass="btn red pull-right"
                     Text="Aceptar <i class='m-icon-swapright m-icon-white'></i>"></asp:LinkButton>
          
             </div>
